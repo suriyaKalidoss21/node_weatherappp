@@ -6,18 +6,19 @@ const geocode = (address, callBack) => {
     request({ uri:geoCodeForwardUrl, json: true }, (error, response, body) => {
         if (error) {
             console.log(error)
-            callBack('Internet issue', undefined)
+          return  callBack('Internet issue', undefined)
         }
         else if (body.error) {
-            callBack('Data issue', undefined)
+           return callBack('Data issue', undefined)
         } else {
-            const coordinates = body.features[0].center;
+          
+            const coordinates = body.features[0].center;           
             debugger
             const data = {
                 'latitude': coordinates[1],
                 'longitude': coordinates[0]
             }
-            callBack(undefined, data)
+         return callBack(undefined, data)
         }
     })
 }
