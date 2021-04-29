@@ -12,7 +12,7 @@ const forecast = (address,callBack) => {
         } else {
             const {temperature,feelslike} = body.current;
            
-          return  callBack(undefined, 'The current temperature is ' + temperature + ' it feels like ' + feelslike)
+          return  callBack(undefined, 'Temperature is ' + temperature + ' it feels like ' + feelslike)
         }
     })
 
