@@ -20,18 +20,20 @@ message1.textContent='test phjase'
 weatherform.addEventListener('submit',(e)=>{
     e.preventDefault()
     const location=search.value;
-  
-    messageOne.textContent = 'Loading...'
-    messageTwo.textContent = ''
+    console.log(location)
 
-    fetch('/weather?address=' + location).then((response) => {
-        response.json().then((data) => {
-            if (data.error) {
-                messageOne.textContent = data.error
-            } else {
-                messageOne.textContent = data.location
-                messageTwo.textContent = data.forecast
-            }
-        })
-    })
-})
+   message1.textContent=location;
+    fetch('/weather?address='+location ).then((response)=>{
+
+        message1.textContent="Loading.....";
+    
+response.json().then((data)=>{
+    if(data.error)
+    {
+   message1.textContent=data.error;
+    }else{
+        console.log(data.forecast)
+        console.log(data.coordinate)
+        message1.textContent=data.forecast;
+    }
+})})})
